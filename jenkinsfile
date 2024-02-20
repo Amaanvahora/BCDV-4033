@@ -1,11 +1,8 @@
 pipeline {
     agent any
-    
     tools {
-        // Define the NodeJS tool named "NodeJS"
         nodejs "NodeJS"
     }
-    
     stages {
         stage('Checkout') {
             steps {
@@ -13,29 +10,26 @@ pipeline {
                 git branch: 'main', credentialsId: '6ea3fe5a-84f0-4e4d-a32d-808d83eaaa53', url: 'https://github.com/Amaanvahora/BCDV-4033'
             }
         }
-        
         stage('Install Dependencies') {
             steps {
                 // Install Node.js dependencies
                 sh 'npm install'
             }
         }
-        
         stage('Build') {
             steps {
                 // Build your Node.js project
                 sh 'npm run build'
             }
         }
-        
         stage('Test') {
             steps {
-                // Run test scripts
+                // Run tests scripts
                 sh 'npm test'
             }
         }
     }
-    
+ 
     post {
         success {
             echo 'Pipeline succeeded!'
