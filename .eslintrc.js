@@ -1,9 +1,25 @@
-/* eslint-disable */
-
 module.exports = {
-  extends: "airbnb-base",
-  rules: {
-    "linebreak-style": ["error", "unix"],
-    quotes: ["error", "single"], // or "double"
-  },
-};
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "overrides": [
+        {
+            "env": {
+                "node": true
+            },
+            "files": [
+                ".eslintrc.{js,cjs}"
+            ],
+            "parserOptions": {
+                "sourceType": "script"
+            }
+        }
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+    }
+}
